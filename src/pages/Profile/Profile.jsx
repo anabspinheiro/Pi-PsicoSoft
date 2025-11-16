@@ -9,12 +9,16 @@ import {
 import ClientProfile from './components/ClientProfile'
 import PersonalInfo from './components/PersonalInfo'
 import AppointmentHistory from './components/AppointmentHistory'
+import Navbar from '../../components/navbar'; 
+
+
+
 
 function Profile() {
-    const [activeTab, setActiveTab] = useState(0);
+    const [activeTab, setActiveView] = useState("consulta");
 
     const handleTabChange = (event, newValue) => {
-        setActiveTab(newValue);
+        setActiveView(newValue);
     };
 
     // dados de exemplo para o ClientProfile
@@ -25,24 +29,27 @@ function Profile() {
     };
 
     return (
+        
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            
             <Box sx={{ width: '100%' }}>
+                    <Navbar navButton={
+        [
+            { label: "Proxima Consulta", onClick: () => setActiveView("consulta") },
+            { label: "Informações Pessoais", onClick: () => setActiveView("info") },
+            { label: "Historico", onClick: () => setActiveView("historico") }
+        ]
+      }/>
+                
+                
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs 
-                        value={activeTab} 
-                        onChange={handleTabChange}
-                        aria-label="profile tabs"
-                    >
-                        <Tab label="Próxima Consulta" />
-                        <Tab label="Informações Pessoais" />
-                        <Tab label="Histórico" />
-                    </Tabs>
-                </Box>
 
+                </Box>
+                
                 <Box sx={{ mt: 3 }}>
-                    {activeTab === 0 && <ClientProfile appointment={sampleAppointment} />}
-                    {activeTab === 1 && <PersonalInfo />}
-                    {activeTab === 2 && <AppointmentHistory />}
+                    {activeTab === "consulta" && <ClientProfile appointment={sampleAppointment} />}
+                    {activeTab === "info" && <PersonalInfo />}
+                    {activeTab === "historico" && <AppointmentHistory />}
                 </Box>
             </Box>
         </Container>
