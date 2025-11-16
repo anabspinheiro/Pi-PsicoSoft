@@ -28,12 +28,24 @@ const drawerWidth = 240;
 function Employee() {
   const [activeView, setActiveView] = useState("dashboard");
 
-  const menuItems = [
-    { text: "Dashboard", icon: <DashboardIcon />, view: "dashboard" },
-    { text: "Métricas", icon: <MetricsIcon />, view: "metrics" },
-    { text: "Gestão de Filas", icon: <QueueIcon />, view: "queue" },
-  ];
-
+    const menuItems = [
+        {
+            text: 'Dashboard',
+            icon: <DashboardIcon />,
+            view: 'dashboard'
+        },
+        {
+            text: 'Métricas',
+            icon: <MetricsIcon />,
+            view: 'metrics'
+        },
+        {
+            text: 'Gestão de Filas',
+            icon: <QueueIcon />,
+            view: 'queue'
+        }
+    ];
+    
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
