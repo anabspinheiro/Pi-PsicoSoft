@@ -60,9 +60,8 @@ function Home() {
         {/* SOBRE */}
         <section id="sobre">
 
-          <div className="grid-2" >
+          <div className="grid-2 , card" style={{ marginTop: 100 }} >
             <div >
-             
               <h1 className="title">Reduza filas e atrasos</h1>
               <p className="section-desc">Fila é sinônimo de frustração — tanto para o paciente quanto para a equipe. Cada minuto de espera desnecessária aumenta o estresse, compromete a experiência e reduz a capacidade de atendimento. E a verdade é simples: clínicas que não controlam seu fluxo continuam perdendo tempo, produtividade e pacientes.
 
@@ -71,33 +70,58 @@ function Home() {
 Com um gerenciamento de filas inteligente, sua equipe visualiza em tempo real quem chegou, quem está atrasado, quem aguarda atendimento e quais profissionais estão disponíveis. O fluxo deixa de ser manual e passa a ser totalmente automatizado, eliminando falhas humanas e desorganização.</p>
 
             </div>
+
             <div className="card-image">
-              <div style={{ height: 480 }}>
-                <img src="/image2.png"alt="Mockup do sistema"className="hero-image"/>
+              <div style={{ height: 380 }}>
+                <img src="/image1.webp"alt="Mockup do sistema"className="hero-image"/>
               </div>
             </div>
           </div>
-            <div>
-            <h1 className="title"></h1>
+
+
+          <div className="grid-2" style={{ marginTop: 100 }}>
+
+                        <div className="card-image">
+              <div style={{ height: 480 }}>
+                <img src="/image4.webp"alt="Mockup do sistema"className="hero-image"/>
+              </div>
             </div>
-          <div className="grid-2 , card">
-              <div className="card-image">
-                <div style={{ height: 380 }}>
-                <img src="/image1.webp"alt="Mockup do sistema"className="hero-image"/>
-              </div>
 
-              </div>
+            
+            <div >
+              <h1 className="title">Uma experiência rápida e humanizada</h1>
+              <p className="section-desc"> Quando um paciente entra em uma clínica, ele não busca apenas um atendimento: ele busca acolhimento, clareza e rapidez. Esperar por longos períodos, enfrentar desorganização ou se sentir “perdido” no processo gera ansiedade — e isso afasta o cuidado humanizado que toda clínica deseja oferecer.
 
-              
-              
+Com o nosso sistema, a experiência muda completamente.
+
+A gestão de filas inteligente garante que o paciente seja direcionado rapidamente, sem confusões, sem retrabalhos, sem “para onde eu vou agora?”.
+O check-in e a confirmação de presença tornam o fluxo mais simples e ágil, evitando acúmulos e atrasos. O paciente percebe de imediato que o processo funciona, que está sendo acompanhado e que existe organização.
+
+E quando o tempo de espera reduz, algo importante acontece</p>
+            </div>
+
+          </div>
+          <div className="grid-2 , card" style={{ marginTop: 100 }}>
+
+
             <div className="">
-              <h1 className="title">Reduza filas e atrasos</h1>
-              <p className="section-desc">ALGUMA COISA AQUI</p>
+              <h1 className="title">Solução completa em uma única plataforma</h1>
+              <p className="section-desc">
+                Imagine gerenciar filas, medir desempenho, acompanhar o NPS dos pacientes e ter total controle do atendimento — tudo sem precisar abrir vários sistemas, sem confusão, sem perda de tempo. É exatamente isso que nossa plataforma entrega: uma solução totalmente integrada que centraliza tudo o que sua clínica precisa para funcionar de forma rápida, organizada e eficiente.
+
+Com um único sistema, você controla o fluxo de atendimento, visualiza métricas em tempo real, identifica gargalos, entende a satisfação dos pacientes e toma decisões baseadas em dados claros. Tudo conversa entre si, tudo funciona de maneira automatizada e tudo está ao seu alcance em poucos cliques.
+
+Ao unificar processos em uma plataforma única, sua clínica reduz custos, evita erros operacionais, melhora a comunicação interna e entrega uma experiência mais ágil e humanizada para cada paciente que chega até você.
+
+É a tecnologia que elimina o caos e entrega controle total. Uma solução completa, num único lugar, pronta para elevar o nível da sua operação.
+</p>
               
             </div>
-              
-            
-            
+            <div className="card-image">
+              <div style={{ height: 380 }}>
+                <img src="/image3.webp"alt="Mockup do sistema"className="hero-image"/>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -109,17 +133,17 @@ Com um gerenciamento de filas inteligente, sua equipe visualiza em tempo real qu
 
           <div className="grid-2">
             <div className="card">
-              <span className="badge">Módulo</span>
+             
               <h3>Gerenciamento de Filas</h3>
-              <p className="muted"></p>
+              <p className="muted">O módulo de filas organiza todo o fluxo de atendimento da clínica em tempo real, mostrando quem está aguardando, o tempo de espera e a ordem de chamada. Ele reduz atrasos, evita aglomerações e otimiza a prioridade dos pacientes de forma automática. Totalmente integrado ao sistema de métricas, oferece uma visão clara da operação e melhora significativamente a experiência do paciente e a eficiência da equipe.</p>
               {/* LINK: agora usa navigate para /filas */}
               <button className="link asbtn" onClick={goToFilas}>Ir para o módulo →</button>
             </div>
 
             <div className="card">
-              <span className="badge">Módulo</span>
+              
               <h3>NPS</h3>
-              <p className="muted"></p>
+              <p className="muted">O módulo de NPS coleta automaticamente o nível de satisfação dos pacientes após cada atendimento e transforma essas respostas em indicadores claros de qualidade. Ele identifica pontos fortes, revela gargalos e mostra exatamente onde melhorar. Com relatórios simples e objetivos, a clínica toma decisões rápidas e estratégicas para elevar a experiência do paciente e fortalecer a reputação do serviço.</p>
               <button className="link asbtn" onClick={goToFilas}>Explorar relatórios →</button>
             </div>
           </div>
@@ -127,24 +151,14 @@ Com um gerenciamento de filas inteligente, sua equipe visualiza em tempo real qu
 
         {/* GALERIA */}
         <section id="galeria">
-          <div className="section-head">
-            <h2 className="section-title">Galeria</h2>
-            <p className="section-desc">Insira aqui capturas de tela do sistema.</p>
-          </div>
 
-          <div className="gallery">
-            <div className="shot">[ Screenshot 1 ]</div>
-            <div className="shot">[ Screenshot 2 ]</div>
-            <div className="shot">[ Screenshot 3 ]</div>
-            <div className="shot">[ Screenshot 4 ]</div>
-          </div>
         </section>
 
         {/* TIME */}
         <section id="time">
           <div className="section-head">
             <h2 className="section-title">Time</h2>
-            <p className="section-desc">Conheça os envolvidos no projeto.</p>
+            <p className="section-title">Conheça os envolvidos no projeto.</p>
           </div>
 
           <div className="grid-4">
