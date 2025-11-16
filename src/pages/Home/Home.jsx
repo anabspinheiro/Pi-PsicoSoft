@@ -16,14 +16,11 @@ function Home() {
       .catch(() => {});
   }, []);
 
-  const goToFilas = () => navigate("/Employee");
-  const goToHome = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const goToAnchor = (id) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  const handleBackToLogin = () => navigate("/");
-
-  const toggleTheme = () => {
+    const goToFilas = () => navigate("/Employee");
+    const goToHome = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    const goToAnchor = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const handleBackToLogin = () => navigate("/");
+    const toggleTheme = () => {
     const html = document.documentElement;
     html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
   };
