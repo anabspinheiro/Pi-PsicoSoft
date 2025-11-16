@@ -59,45 +59,45 @@ function Home() {
 
         {/* SOBRE */}
         <section id="sobre">
-          <div className="section-head">
-            <h2 className="section-title">Sobre o Projeto</h2>
-            <p className="section-desc">
-              {/* Texto explicativo opcional */}
-            </p>
-          </div>
 
-          <div className="grid-2">
-            <div className="card">
-              <span className="badge">Contexto</span>
-              <h3>Desafio</h3>
-              <p className="muted">O sistema foi desenvolvido após identificar diversos desafios enfrentados por clínicas médicas, como dificuldades de acesso a consultas especializadas, falhas na infraestrutura, problemas de agendamento, limitações na telemedicina e ineficiências em sistemas já existentes. Com isso, o foco atual está no aperfeiçoamento do módulo de gestão de filas e confirmação de presença, complementando funcionalidades do sistema para melhorar a organização dos atendimentos e o controle das filas de espera.
-O tema foi escolhido em consenso pela relevância para empresas da área da saúde, oferecendo uma solução que otimiza tempo, aumenta a produtividade, melhora a gestão administrativa e garante segurança dos dados. O sistema se consolida não apenas como uma plataforma de gestão, mas como um recurso que permite às clínicas focarem no atendimento humanizado e de maior qualidade ao paciente.</p>
+          <div className="grid-2" >
+            <div >
+             
+              <h1 className="title">Reduza filas e atrasos</h1>
+              <p className="section-desc">Fila é sinônimo de frustração — tanto para o paciente quanto para a equipe. Cada minuto de espera desnecessária aumenta o estresse, compromete a experiência e reduz a capacidade de atendimento. E a verdade é simples: clínicas que não controlam seu fluxo continuam perdendo tempo, produtividade e pacientes.
 
-              <h3>Objetivos</h3>
-              <ul className="muted">
-                <li>Reduzir tempo médio de espera</li>
-                <li>Melhorar visibilidade das filas</li>
-                <li>Mensurar satisfação com NPS</li>
-              </ul>
+É exatamente aí que o nosso sistema entra.
+
+Com um gerenciamento de filas inteligente, sua equipe visualiza em tempo real quem chegou, quem está atrasado, quem aguarda atendimento e quais profissionais estão disponíveis. O fluxo deixa de ser manual e passa a ser totalmente automatizado, eliminando falhas humanas e desorganização.</p>
+
             </div>
             <div className="card-image">
-              <div className="media-placeholder" style={{ height: 580 }}>
-                <img src="/Diagrama.png"alt="Mockup do sistema"className="hero-image"/>
+              <div style={{ height: 480 }}>
+                <img src="/image2.png"alt="Mockup do sistema"className="hero-image"/>
               </div>
             </div>
           </div>
-            <hr />
-          <div className="grid-1  ">
-            <div className="card">
-              <h3>Desensolvimento</h3>
-              <p className="muted">O sistema foi desenvolvido para resolver problemas comuns em clínicas, como desorganização de filas, atrasos, falta de controle de presença e baixa eficiência no atendimento. A partir do levantamento de requisitos e análises de fluxos, o projeto evoluiu para a criação de um módulo de Gestão de Filas e NPS totalmente integrado.
-
-No front-end, foram implementadas interfaces responsivas em React/TypeScript, permitindo que pacientes confirmem presença e acompanhem a fila em tempo real, enquanto funcionários gerenciam atendimentos, prioridades e métricas operacionais.
-
-No back-end, a arquitetura serverless da AWS (API Gateway, Lambda e DynamoDB) garantiu escalabilidade, segurança e baixo custo, com autenticação por UUID e lógica otimizada de atualização da fila. O banco foi modelado para consultas rápidas e armazenamento flexível.
-
-Foram implementados também dashboards com métricas como tempo de espera, taxa de ausência e NPS, permitindo análises gerenciais imediatas. O resultado é um sistema ágil, seguro e voltado a melhorar a experiência do paciente e a eficiência operacional das clínicas.</p>
+            <div>
+            <h1 className="title"></h1>
             </div>
+          <div className="grid-2 , card">
+              <div className="card-image">
+                <div style={{ height: 380 }}>
+                <img src="/image1.webp"alt="Mockup do sistema"className="hero-image"/>
+              </div>
+
+              </div>
+
+              
+              
+            <div className="">
+              <h1 className="title">Reduza filas e atrasos</h1>
+              <p className="section-desc">ALGUMA COISA AQUI</p>
+              
+            </div>
+              
+            
+            
           </div>
         </section>
 

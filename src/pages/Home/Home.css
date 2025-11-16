@@ -54,7 +54,7 @@ html[data-theme="dark"] .btn.ghost{border-color:rgba(255,255,255,.12)}
 .hero{ padding: 80px 0 32px; }
 .hero-grid{display:grid;  align-items:center}
 .eyebrow{color:var(--color-accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.85rem}
-.title{font-size:clamp(28px,4vw,48px); margin:10px 0 12px; line-height:1.15}
+.title{font-size:clamp(28px,4vw,48px); margin:10px 20px 12px; line-height:1.15}
 .subtitle{color:var(--color-muted); font-size:1.05rem; max-width:55ch}
 .hero-actions{margin-top:22px; display:flex; gap:12px; flex-wrap:wrap}
 .hero-media{background:var(--color-surface); border-radius:var(--radius); box-shadow:var(--shadow); padding:8px; overflow:hidden}
@@ -67,8 +67,18 @@ html[data-theme="dark"] .btn.ghost{border-color:rgba(255,255,255,.12)}
 /* Sections */
 section{padding:56px 0}
 .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; margin-bottom:24px; flex-wrap:wrap}
-.section-title{font-size:1.6rem; margin:0}
-.section-desc{color:var(--color-muted); max-width:70ch}
+.section-title{font-size:1.6rem; margin:0; font-weight:700; line-height:1.1; }
+
+.section-desc {
+  color: var(--color-muted);
+  width: 70ch;
+  line-height: 1.8;
+  font-size: 1rem;
+  margin: 20px;
+  align-items: center;
+  
+}
+
 .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:var(--gap)}
 .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--gap)}
 .card{
