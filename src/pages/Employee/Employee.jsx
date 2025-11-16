@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import MetricsIcon from "@mui/icons-material/Assessment";
 import QueueIcon from "@mui/icons-material/Queue";
 
 import MetricsPanel from "./components/MetricsPanel";
@@ -20,17 +21,31 @@ import QueueManagement from "./components/QueueManagement";
 
 // Navbar superior
 import Navbar from '../../components/navbar'; 
+import Dashboard from "./components/Dashboard";
 
 const drawerWidth = 240;
 
 function Employee() {
   const [activeView, setActiveView] = useState("dashboard");
 
-  const menuItems = [
-    { text: "Dashboard", icon: <DashboardIcon />, view: "dashboard" },
-    { text: "Gestão de Filas", icon: <QueueIcon />, view: "queue" },
-  ];
-
+    const menuItems = [
+        {
+            text: 'Dashboard',
+            icon: <DashboardIcon />,
+            view: 'dashboard'
+        },
+        {
+            text: 'Métricas',
+            icon: <MetricsIcon />,
+            view: 'metrics'
+        },
+        {
+            text: 'Gestão de Filas',
+            icon: <QueueIcon />,
+            view: 'queue'
+        }
+    ];
+    
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -97,7 +112,8 @@ function Employee() {
       >
         <Toolbar />
 
-        {activeView === "dashboard" && <MetricsPanel />}
+        {activeView === "dashboard" && <Dashboard />}
+        {activeView === "metrics" && <MetricsPanel />}
         {activeView === "queue" && <QueueManagement />}
       </Box>
     </Box>
