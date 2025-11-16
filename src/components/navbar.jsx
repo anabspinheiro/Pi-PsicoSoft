@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const APP_NAME = import.meta.env.VITE_APP_NAME || "PsicoSoft MGF";
 const API_URL = import.meta.env.VITE_API_URL;
 
-function Navbar({ drawerWidth = 0 }) {
+function Navbar({ drawerWidth = 0, navButton = [ { label: "NPS - Relatório", onClick: () => {} } ] }) {
   const navigate = useNavigate();
   const [me, setMe] = useState(null);
 
@@ -68,15 +68,13 @@ function Navbar({ drawerWidth = 0 }) {
             justifyContent: "center",
           }}
         >
-          <Button onClick={goToHomePage}>Home</Button> {/* <<-- aqui */}
-          <Button onClick={() => goToAnchor("modulos")}>Módulos</Button>
-          <Button onClick={() => goToAnchor("sobre")}>Sobre</Button>
-          <Button onClick={() => goToAnchor("time")}>Time</Button>
-          <Button onClick={() => goToAnchor("contato")}>Contato</Button>
-
-          <Button color="primary" variant="contained" onClick={goToFilas}>
-            NPS - Relatório
-          </Button>
+          {
+            navButton.map((btn, idx) => (
+              <Button key={idx} onClick={btn.onClick}>
+                {btn.label}
+              </Button>
+            ))
+          }
         </Box>
 
         {/* Usuário / Sair */}

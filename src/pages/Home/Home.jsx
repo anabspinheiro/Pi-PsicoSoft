@@ -1,6 +1,7 @@
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Navbar from "../../components/navbar";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const APP_NAME = import.meta.env.VITE_APP_NAME || "PsicoSoft MGF";
@@ -28,6 +29,15 @@ function Home() {
   return (
     <div className="page">
       <main id="home" className="container">
+        <Navbar
+          navButton={[
+            { label: "Home", onClick: goToHome },
+            { label: "Módulos", onClick: () => goToAnchor("modulos") },
+            { label: "Sobre", onClick: () => goToAnchor("sobre") },
+            { label: "NPS - Relatório", onClick: () => navigate("/Employee") }
+          ]}
+        />
+        
 
         {/* HERO */}
         <section className="hero" id="home">
