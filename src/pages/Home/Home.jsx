@@ -16,7 +16,7 @@ function Home() {
       .catch(() => {});
   }, []);
 
-  const goToFilas = () => navigate("/filas");
+  const goToFilas = () => navigate("/Employee");
   const goToHome = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const goToAnchor = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -113,7 +113,7 @@ Foram implementados também dashboards com métricas como tempo de espera, taxa 
               <span className="badge">Módulo</span>
               <h3>NPS</h3>
               <p className="muted"></p>
-              <button className="link asbtn" onClick={() => goToAnchor('galeria')}>Explorar relatórios →</button>
+              <button className="link asbtn" onClick={goToFilas}>Explorar relatórios →</button>
             </div>
           </div>
         </section>

@@ -22,7 +22,7 @@ const theme = createTheme({
     },
     background: {
       default: '#F5F7FB', // Cor de fundo da página
-      paper: '#ffffff',   // Cor de fundo dos 'Cards', 'Dialogs', 'Menus'
+      paper: '#F5F7FB',   // Cor de fundo dos 'Cards', 'Dialogs', 'Menus'
     },
     text: {
       primary: '#0B1221',   // Cor principal de texto

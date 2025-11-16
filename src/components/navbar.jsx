@@ -26,7 +26,7 @@ function Navbar() {
     const [me, setMe] = useState(null);
     
     const goToHome = () => window.scrollTo({ top: 0, behavior: "smooth" });
-    const goToFilas = () => navigate("/filas");
+    const goToFilas = () => navigate("/Employee");
     const goToAnchor = (id) =>
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -42,7 +42,7 @@ function Navbar() {
     
 
     return (
-        <AppBar position="sticky" color="default" elevation={1}>
+        <AppBar color="default" elevation={1}>
             <Toolbar sx={{ gap: 2 }}>
             <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer" }} onClick={goToHome}>
                 <DashboardIcon sx={{ mr: 1 }} />
@@ -60,7 +60,7 @@ function Navbar() {
                 <Button onClick={() => goToAnchor("sobre")}>Sobre</Button>
                 <Button onClick={() => goToAnchor("time")}>Time</Button>
                 <Button onClick={() => goToAnchor("contato")}>Contato</Button>
-                <Button onClick={goToFilas} color="primary">Filas</Button>
+                <Button onClick={goToFilas} color="primary">NPS - Relatório</Button>
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>

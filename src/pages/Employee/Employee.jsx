@@ -21,6 +21,7 @@ import {
 import MetricsPanel from './components/MetricsPanel';
 import QueueManagement from './components/QueueManagement';
 
+
 const drawerWidth = 240; // Largura do menu lateral
 
 function Employee() {
@@ -72,8 +73,8 @@ function Employee() {
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
-                        backgroundColor: '#2e4347', // Cor escura da sua paleta
-                        color: '#fff8d4' // Cor clara da sua paleta
+                        backgroundColor: 'background.paper', // Cor escura da sua paleta
+                        color: 'text.primary' // Cor clara da sua paleta
                     },
                 }}
             >
@@ -93,7 +94,7 @@ function Employee() {
                                     }
                                 }}
                             >
-                                <ListItemIcon sx={{ color: '#fff8d4' }}>
+                                <ListItemIcon sx={{ color: 'text.primary' }}>
                                     {item.icon}
                                 </ListItemIcon>
                                 <ListItemText primary={item.text} />
