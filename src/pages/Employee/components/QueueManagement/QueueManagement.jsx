@@ -144,7 +144,7 @@ const StatusMonitor = ({ currentlyServing, waitingTotal, averageWaitTime }) => (
 /* ---------------------------------------------
    Página: QueueManagement
    --------------------------------------------- */
-function QueueManagement() {
+function QueueManagement({data}) {
   const theme = useTheme();
 
   // Dados de exemplo

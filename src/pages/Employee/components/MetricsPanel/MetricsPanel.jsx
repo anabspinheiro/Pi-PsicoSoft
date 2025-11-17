@@ -35,7 +35,7 @@ const flowData = [
   { time: "14h", value: 14 },
 ];
 
-function MetricsPanel() {
+function MetricsPanel({data}) {
   const theme = useTheme();
 
   return (

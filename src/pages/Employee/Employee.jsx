@@ -1,5 +1,5 @@
 // Employee.jsx
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Drawer,
@@ -26,7 +26,45 @@ import Dashboard from "./components/Dashboard";
 
 function Employee() {
   const [activeView, setActiveView] = useState("dashboard");
+  const [endDate, setEndDate] = useState('14/11/2025');
+  const [startDate, setStartDate] = useState('08/11/2025');
 
+  const [consultaData, setConsultaData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Function to fetch data from API
+  const fetchConsultas = async (startDate, endDate) => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      const url = new URL('https://6blopd43v4.execute-api.us-east-1.amazonaws.com/Alpha/Consulta/ListAll');
+      url.searchParams.append('start_date', startDate);
+      url.searchParams.append('end_date', endDate);
+
+      const response = await fetch(url.toString());
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      setConsultaData(data);
+      console.log('Consulta data:', data);
+    } catch (err) {
+      setError(err.message);
+      console.error('Error fetching consultas:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Example: Fetch data on component mount
+  useEffect(() => {
+    fetchConsultas(startDate, endDate);
+  }, [startDate, endDate]);
+  
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -51,9 +89,9 @@ function Employee() {
       >
         <Toolbar />
 
-        {activeView === "dashboard" && <Dashboard />}
-        {activeView === "metrics" && <MetricsPanel />}
-        {activeView === "queue" && <QueueManagement />}
+        {activeView === "dashboard" && <Dashboard data={consultaData} startDate={startDate} endDate={endDate} />}
+        {activeView === "metrics" && <MetricsPanel data={consultaData} />}
+        {activeView === "queue" && <QueueManagement data={consultaData} />}
       </Box>
     </Box>
   );

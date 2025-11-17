@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Card,
@@ -43,12 +42,7 @@ import {
 /* ============================
    Dados de exemplo (mantidos)
 ============================ */
-const stats = {
-  pacientesHoje: 45,
-  tempoMedioEspera: "25min",
-  ocupacao: 75,
-  alertas: 3,
-};
+
 
 const tempoEsperaData = [
   { hora: "08:00", tempo: 15 },
@@ -128,10 +122,92 @@ function KPICard({ icon, label, value, extra }) {
 }
 
 /* ============================
+   Helper: Filter by date
+============================ */
+function filterDataByDate(data, date) {
+  if (!data || !date) return [];
+  
+  return data.filter(item => {
+    if (!item.horario) return false;
+    
+    // Extract date portion from horario (format: "07/11/2025 18:00")
+    const horarioDate = item.horario.split(' ')[0]; // Gets "07/11/2025"
+    
+    // Compare with date (format: "07/11/2025")
+    return horarioDate === date;
+  });
+}
+
+/* ============================
    Página: Dashboard
 ============================ */
-function Dashboard() {
+function Dashboard({data, startDate, endDate}) {
   const theme = useTheme();
+
+  // Filter data where the date portion of 'horario' matches 'endDate'
+  const todaysData = filterDataByDate(data, endDate);
+
+  const tempoMedioEspera = (data) => {return data.length > 0 ? (
+    data.reduce((sum, item) => sum + (parseFloat(item.idade) || 0), 0) / data.length
+  ).toFixed(0) : 0;}
+
+  const typeData = (data) => {
+    const statusCounts = {
+      "Normal": 0,
+      "Média": 0,
+      "Alta": 0,
+    };
+    data.forEach(item => {
+      if (item.motivo) {
+        if (item.motivo.length < 5 ) {
+          statusCounts["Normal"]++;
+        }
+        if (item.motivo.length < 10 && item.motivo.length >= 5) {
+          statusCounts["Média"]++;
+        }
+        if (item.motivo.length >= 10) {
+          statusCounts["Alta"]++;
+        }
+      }
+    });
+    console.log("Status Counts:", statusCounts);
+    return Object.keys(statusCounts).map(status => ({
+      name: status,
+      value: statusCounts[status],
+    }));
+  };
+
+  const stats = {
+    pacientesHoje: todaysData.length,
+    tempoMedioEspera: `${tempoMedioEspera(todaysData)}min`,
+    ocupacao: todaysData.length > 0 ? Math.min(100, (todaysData.length / 10) * 100) : 0,
+    alertas: typeData(todaysData).find(item => item.name === "Alta")?.value || 0,
+  };
+
+  // Generate tempoEsperaData for each day between startDate and endDate
+  const tempoEsperaData = (() => {
+    if (!startDate || !endDate) return [];
+    
+    const result = [];
+    const [startDay, startMonth, startYear] = startDate.split('/').map(Number);
+    const [endDay, endMonth, endYear] = endDate.split('/').map(Number);
+    
+    const start = new Date(startYear, startMonth - 1, startDay);
+    const end = new Date(endYear, endMonth - 1, endDay);
+    
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      const dateStr = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+      const dayData = filterDataByDate(data, dateStr);
+      const avgTime = Number(tempoMedioEspera(dayData)) || 0;
+      
+      result.push({
+        dia: `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`,
+        tempo: avgTime
+      });
+    }
+    
+    return result;
+  })();
 
   return (
     <Container maxWidth="xl" disableGutters>
@@ -229,13 +305,13 @@ function Dashboard() {
             >
               <Box p={2}>
                 <Typography variant="h6" fontWeight={800} gutterBottom>
-                  Tempo Médio de Espera por Hora
+                  Tempo Médio de Espera por Dia
                 </Typography>
 
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={tempoEsperaData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="hora" />
+                    <XAxis dataKey="dia" />
                     <YAxis />
                     <Tooltip />
                     <Legend />
