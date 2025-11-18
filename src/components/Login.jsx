@@ -1,5 +1,5 @@
 import "./Login.css";
-
+import { FaUser, FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
