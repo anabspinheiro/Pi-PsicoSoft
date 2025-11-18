@@ -24,14 +24,21 @@ function Navbar({ drawerWidth = 0, navButton = [ { label: "NPS - Relatório", on
   const handleBackToLogin = () => {
     localStorage.clear();
     sessionStorage.clear();
-    navigate("/")
+    setMe(null);
+    navigate("/");
   };
 
   useEffect(() => {
-    fetch(`${API_URL}/me`, { credentials: "include" })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => setMe(data))
-      .catch(() => {});
+    const userDataStr = localStorage.getItem("userData");
+    console.log("userDataStr:", userDataStr);
+    if (userDataStr) {
+      try {
+        const userData = JSON.parse(userDataStr);
+        setMe(userData);
+      } catch (error) {
+        console.error("Failed to parse userData from localStorage", error);
+      }
+    }
   }, []);
 
   return (
@@ -83,17 +90,18 @@ function Navbar({ drawerWidth = 0, navButton = [ { label: "NPS - Relatório", on
 
         {/* Usuário / Sair */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          {me?.user ? (
-            <Chip
-              avatar={<Avatar src={me.user.picture} alt={me.user.name} />}
-              label={me.user.name}
-              title={me.user.email}
-              sx={{ maxWidth: 160 }}
-            />
-          ) : (
-            <Button variant="outlined" onClick={handleBackToLogin}>
-              Sair
-            </Button>
+          {me && (
+            <>
+              <Chip
+                avatar={<Avatar src={me.picture} alt={me.name} />}
+                label={me.name}
+                title={me.email}
+                sx={{ maxWidth: 160 }}
+              />
+              <Button variant="outlined" onClick={handleBackToLogin}>
+                Sair
+              </Button>
+            </>
           )}
         </Box>
       </Toolbar>

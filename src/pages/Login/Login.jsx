@@ -12,9 +12,10 @@ import {
   InputAdornment,
   Divider,
   Alert,
-  CircularProgress
+  CircularProgress,
+  IconButton
 } from '@mui/material';
-import { Person, Lock, Google } from '@mui/icons-material';
+import { Person, Lock, Google, ArrowBack } from '@mui/icons-material';
 
 function Login() {
   const navigate = useNavigate();
@@ -89,7 +90,13 @@ function Login() {
       }
 
       // Store user data if needed
-      localStorage.setItem('userData', JSON.stringify(data.client));
+      localStorage.setItem('userData', JSON.stringify(
+        {
+          ...data.client,
+          tipo: userType,
+          email: formData.email
+        }
+      ));
 
       // Navigate based on user type
       if (userType === 'Funcionario') {
@@ -112,8 +119,23 @@ function Login() {
         alignItems: 'center',
         minHeight: '100vh',
         background: (theme) => `linear-gradient(135deg, ${theme.palette.info.main}, ${theme.palette.secondary.main})`,
+        position: 'relative',
       }}
     >
+      <IconButton
+        onClick={() => navigate('/')}
+        sx={{
+          position: 'absolute',
+          top: 16,
+          left: 16,
+          bgcolor: 'background.paper',
+          '&:hover': {
+            bgcolor: 'background.default',
+          },
+        }}
+      >
+        <ArrowBack />
+      </IconButton>
       <Card
         sx={{
           width: 400,
