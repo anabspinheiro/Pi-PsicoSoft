@@ -34,8 +34,8 @@ function Home() {
             { label: "Home", onClick: goToHome },
             { label: "Módulos", onClick: () => goToAnchor("modulos") },
             { label: "Sobre", onClick: () => goToAnchor("sobre") },
-            { label: "NPS - Relatório", onClick: () => navigate("/Employee") },
-            { label: "Perfil", onClick: () => navigate( "/profile")},
+            { label: "Login Funcionário", onClick: () => navigate("/login?userType=Funcionario") },
+            { label: "Login Paciente", onClick: () => navigate("/login?userType=Paciente")},
           ]}
         />
         

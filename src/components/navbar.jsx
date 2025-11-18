@@ -21,7 +21,11 @@ function Navbar({ drawerWidth = 0, navButton = [ { label: "NPS - Relatório", on
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const handleBackToLogin = () => navigate("/");
+  const handleBackToLogin = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    navigate("/")
+  };
 
   useEffect(() => {
     fetch(`${API_URL}/me`, { credentials: "include" })

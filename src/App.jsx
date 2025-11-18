@@ -1,11 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
-import { Button } from '@mui/material'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Profile from './pages/Profile'
 import Employee from './pages/Employee'
 import './App.css'
 import Home from './pages/Home'
-import Navbar from './components/navbar'
+import { Login } from './pages/Login'
+import ProtectedRoute from './components/ProtectedRoute'
 
 
 // O componente App agora só configura o Router
@@ -15,9 +14,10 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home/>} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/employee" element={<Employee />} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/employee" element={<ProtectedRoute><Employee /></ProtectedRoute>} />
         </Routes>
       </div>
     </Router>

@@ -43,18 +43,6 @@ import {
    Dados de exemplo (mantidos)
 ============================ */
 
-
-const tempoEsperaData = [
-  { hora: "08:00", tempo: 15 },
-  { hora: "09:00", tempo: 25 },
-  { hora: "10:00", tempo: 30 },
-  { hora: "11:00", tempo: 20 },
-  { hora: "12:00", tempo: 10 },
-  { hora: "13:00", tempo: 15 },
-  { hora: "14:00", tempo: 35 },
-  { hora: "15:00", tempo: 25 },
-];
-
 const tiposConsultaData = [
   { tipo: "Regular", quantidade: 30 },
   { tipo: "Urgente", quantidade: 15 },
